@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Item } from './item.entity';
-import { CreateItemDto } from './item.dto';
+import { Item } from './item.entity.js';
+import { CreateItemDto } from './item.dto.js';
 
 @Injectable()
 export class ItemService {
@@ -12,11 +12,11 @@ export class ItemService {
   ) {}
 
   findAll(): Promise<Item[]> {
-    return this.itemRepository.find({ relations: ['lista'] });
+    return this.itemRepository.find({ relations: { lista: true } });
   }
 
   async findOne(id: number): Promise<Item> {
-    const item = await this.itemRepository.findOne({ where: { id }, relations: ['lista'] });
+    const item = await this.itemRepository.findOne({ where: { id }, relations: { lista: true } });
     if (!item) {
       throw new NotFoundException(`Item com ID ${id} não encontrado.`);
     }

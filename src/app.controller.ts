@@ -1,21 +1,12 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { CreateItemDto } from './create-item.dto.js'; // <- Note o .js no final
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service.js';
 
-@Controller('items')
+@Controller()
 export class AppController {
-  private items: CreateItemDto[] = [];
+  constructor(private readonly appService: AppService) {}
 
   @Get()
-  findAll() {
-    return this.items;
-  }
-
-  @Post()
-  create(@Body() createItemDto: CreateItemDto) {
-    this.items.push(createItemDto);
-    return {
-      message: 'Item criado com sucesso!',
-      data: createItemDto,
-    };
+  getHello() {
+    return this.appService.getHello();
   }
 }

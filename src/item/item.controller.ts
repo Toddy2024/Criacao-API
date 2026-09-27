@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
-import { ItemService } from './item.service';
-import { CreateItemDto } from './item.dto';
+import { ItemService } from './item.service.js';
+import { CreateItemDto } from './item.dto.js';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('itens')

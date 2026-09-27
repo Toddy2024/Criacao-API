@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
-import { ListaService } from './lista.service';
-import { CreateListaDto } from './lista.dto';
+import { ListaService } from './lista.service.js';
+import { CreateListaDto } from './lista.dto.js';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('listas')

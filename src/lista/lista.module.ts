@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Lista } from './lista.entity';
-import { ListaService } from './lista.service';
-import { ListaController } from './lista.controller';
+import { Lista } from './lista.entity.js';
+import { ListaService } from './lista.service.js';
+import { ListaController } from './lista.controller.js';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Lista])],

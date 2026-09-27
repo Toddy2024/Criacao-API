@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Lista } from '../lista/lista.entity';
+import { Lista } from '../lista/lista.entity.js';
 
 @Entity('itens')
 export class Item {
@@ -7,17 +7,17 @@ export class Item {
   id: number;
 
   @Column()
-  nomeItem: string; // Validação de string
+  nomeItem: string;
 
   @Column('decimal')
-  quantidade: number; // Validação de número
+  quantidade: number;
 
   @Column('decimal')
-  preco: number; // Validação de número
+  preco: number;
 
   @Column()
-  comentario: string; // Comentário exigido (ex: com o seu nome)
+  comentario: string;
 
   @ManyToOne(() => Lista, (lista) => lista.itens, { onDelete: 'CASCADE' })
-  lista: Lista;
+  lista: any;
 }

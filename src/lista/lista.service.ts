@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Lista } from './lista.entity';
-import { CreateListaDto } from './lista.dto';
+import { Lista } from './lista.entity.js';
+import { CreateListaDto } from './lista.dto.js';
 
 @Injectable()
 export class ListaService {
@@ -12,11 +12,11 @@ export class ListaService {
   ) {}
 
   findAll(): Promise<Lista[]> {
-    return this.listaRepository.find({ relations: ['itens'] });
+    return this.listaRepository.find({ relations: { itens: true } });
   }
 
   async findOne(id: number): Promise<Lista> {
-    const lista = await this.listaRepository.findOne({ where: { id }, relations: ['itens'] });
+    const lista = await this.listaRepository.findOne({ where: { id }, relations: { itens: true } });
     if (!lista) {
       throw new NotFoundException(`Lista com ID ${id} não encontrada.`);
     }

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Item } from '../item/item.entity';
+import { Item } from '../item/item.entity.js';
 
 @Entity('listas')
 export class Lista {
@@ -13,5 +13,5 @@ export class Lista {
   descricao: string;
 
   @OneToMany(() => Item, (item) => item.lista, { cascade: true })
-  itens: Item[];
+  itens: any[];
 }
